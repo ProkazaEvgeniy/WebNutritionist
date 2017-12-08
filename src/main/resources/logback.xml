@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+	<!-- http://logback.qos.ch/manual/appenders.html -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</layout>
+	</appender>
+	<!-- http://logback.qos.ch/manual/appenders.html -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>C:/apache-tomcat-8.5.6/webnutritionist.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>webnutritionist.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<!-- keep 30 days' worth of history capped at 3GB total size -->
+			<maxHistory>30</maxHistory>
+			<totalSizeCap>3GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!--logger name="org.hibernate.SQL" level="debug" /> <logger name="org.hibernate.type" level="trace" /-->
+
+	<logger name="net.www.webnutritionist.service.impl" level="debug" />
+
+	<logger name="net.www.webnutritionist.controller" level="debug" />
+	
+	<logger name="net.www.webnutritionist.component.impl.JpegTranImageOptimizator" level="debug" />
+	
+	<logger name="net.www.webnutritionist.component.impl.UploadImageTempStorage" level="debug" />
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

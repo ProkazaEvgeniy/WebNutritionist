@@ -1,0 +1,16 @@
+package net.www.webnutritionist.component;
+
+import javax.annotation.Nonnull;
+
+import net.www.webnutritionist.entity.Order;
+
+public interface DataBuilder {
+
+	@Nonnull String buildProfileUid(@Nonnull String firstName, @Nonnull String lastName);
+	
+	@Nonnull String buildRestoreAccessLink(@Nonnull String appHost, @Nonnull String token);
+	
+	@Nonnull String rebuildUidWithRandomSuffix(@Nonnull String baseUid, @Nonnull String alphabet, int letterCount);
+	
+	@Nonnull String buildNewOrderCreatedNotificationMessage(@Nonnull String appHost, @Nonnull Order order);
+}
